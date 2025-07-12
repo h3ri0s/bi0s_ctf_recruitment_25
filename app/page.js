@@ -115,7 +115,7 @@ export default function HomePage() {
           href="https://wiki.bi0s.in/"
           className="bg-blue-500 hover:bg-blue-600 text-black font-semibold px-6 py-3 rounded-xl transition"
         >
-          Let's hack →
+          For More Information →
         </a>
       </section>
 

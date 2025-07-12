@@ -28,7 +28,7 @@ export const AboutSection = () => {
   };
 
   return (
-    <section className="bg-gray-900 py-12 px-4 sm:py-16 md:py-20 text-white">
+    <section className="bg-gray-900 py-12 px-4 sm:py-16 md:py-20 text-white" id="aboutus">
       <div className="max-w-5xl mx-auto text-center">
         <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-400 mb-8">
           About the bi0sCTF Team
