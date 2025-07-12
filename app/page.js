@@ -51,73 +51,75 @@ export default function HomePage() {
       </div>
 
       {/* Countdown Section */}
-      <section className="bg-gray-700 text-center py-12">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-500 mb-4" id="ctfdetail">
-          Prove Yourself And Grab a Spot Among the Elite
-        </h2>
+      <section
+  className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] py-16 px-6 text-white text-center"
+  id="ctfdetail"
+>
+  <div className="max-w-5xl mx-auto">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-6">
+      Prove Yourself And Grab a Spot Among the Elite
+    </h2>
 
-        <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto mb-6">
-          All you need to do is prove yourself. Take on the challenges and conquer them all to show us your mettle, and claim your spot among the elite!
+    <p className="text-base md:text-lg text-slate-300 max-w-3xl mx-auto mb-6 leading-relaxed">
+      All you need to do is prove yourself. Take on the challenges and conquer them all to show us your mettle, and claim your spot among the elite!
+    </p>
+
+    <p className="text-sm md:text-base text-red-400 max-w-3xl mx-auto leading-snug">
+      <strong>NOTE:</strong> This Recruitment drive is only for upcoming freshers in the Amritapuri campus (’25–’29 batch). We are <u>not</u> recruiting Second years (Sem 3) or Third Years (Sem 5) students.
+    </p>
+
+    {isActive ? (
+      <div className="mt-10">
+        <h3 className="text-2xl md:text-4xl font-bold text-green-400 mb-2 animate-pulse">
+          🎉 RECRUITMENT IS NOW ACTIVE! 🎉
+        </h3>
+        <p className="text-lg md:text-xl text-green-300">
+          Active From: July 14th, 2025 Onwards
         </p>
-
-        <p className="text-sm md:text-base text-red-400 max-w-3xl mx-auto">
-          <strong>NOTE:</strong> This Recruitment drive is only for upcoming freshers in the Amritapuri campus ('25-'29 batch). We are <u>not</u> recruiting Second years (Sem 3) or Third Years (Sem 5) students.
-        </p>
-
-        {isActive ? (
-          <div className="text-center mt-10">
-            <h1 className="text-2xl md:text-4xl font-bold text-green-400 mb-2">
-              🎉 RECRUITMENT IS NOW ACTIVE! 🎉
-            </h1>
-            <p className="text-lg md:text-xl text-green-300">
-              Active From: July 14th, 2025 Onwards
-            </p>
-          </div>
-        ) : (
-          <div className="text-center mt-10">
-            <h1 className="text-xl md:text-2xl font-bold text-blue-400 mb-4">
-              Countdown to Recruitment:
-            </h1>
-            <div className="flex justify-center items-center space-x-4 md:space-x-8">
-              {["Days", "Hours", "Minutes", "Seconds"].map((label, index) => {
-                const value = [timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds][index];
-                return (
-                  <div key={label} className="bg-gray-800 p-4 rounded-lg">
-                    <div className="text-2xl md:text-4xl font-bold text-blue-400">{value}</div>
-                    <div className="text-sm md:text-base text-gray-300">{label}</div>
-                  </div>
-                );
-              })}
-            </div>
-            <p className="text-sm md:text-base text-gray-400 mt-4">
-              Active From: July 14th, 2025 Onwards
-            </p>
-          </div>
-        )}
-
-        {/* Recruitment Portal Link */}
-        <div className="mt-8">
-          <a
-            href="https://recruitment.bi0s.in/login"
-            className="inline-block bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-xl transition"
-          >
-            Go to Recruitment Portal →
-          </a>
+      </div>
+    ) : (
+      <div className="mt-10">
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-4">
+          Countdown to Recruitment:
+        </h3>
+        <div className="flex justify-center items-center flex-wrap gap-4 md:gap-6">
+          {["Days", "Hours", "Minutes", "Seconds"].map((label, i) => {
+            const value = [timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds][i];
+            return (
+              <div
+                key={label}
+                className="w-20 sm:w-24 bg-[#1e293b] border border-slate-600 p-4 rounded-xl shadow-inner backdrop-blur-md"
+              >
+                <div className="text-2xl sm:text-3xl font-bold text-blue-300">{value}</div>
+                <div className="text-xs sm:text-sm text-slate-400 mt-1">{label}</div>
+              </div>
+            );
+          })}
         </div>
-      </section>
+        <p className="text-sm md:text-base text-slate-400 mt-4">
+          Active From: July 14th, 2025 Onwards
+        </p>
+      </div>
+    )}
+
+    <div className="mt-10">
+      <a
+        href="https://recruitment.bi0s.in/login"
+        className="inline-block px-6 py-3 rounded-xl bg-blue-400 text-black font-semibold shadow-md hover:scale-105 transition-transform duration-300"
+      >
+        Go to Recruitment Portal →
+      </a>
+    </div>
+  </div>
+</section>
+
 
       {/* Resources Section */}
-      <section className="text-center py-24 px-6">
-        <div className="mb-8">
+        <div> 
+
           <ResourcesSection />
         </div>
-        <a
-          href="https://wiki.bi0s.in/"
-          className="bg-blue-500 hover:bg-blue-600 text-black font-semibold px-6 py-3 rounded-xl transition"
-        >
-          For More Information →
-        </a>
-      </section>
+
 
       {/* About Section */}
       <AboutSection />

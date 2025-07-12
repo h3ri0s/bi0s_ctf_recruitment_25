@@ -1,107 +1,221 @@
 "use client";
-
-import React from "react";
+import React, { useState } from "react";
 
 export const ResourcesSection = () => {
+  const [bgClass, setBgClass] = useState(
+    "from-[#0f0f0f]/80 via-[#10141c]/80 to-[#0f0f0f]/80"
+  );
+
+  const handleEnter = (gradient) => () => setBgClass(gradient);
+  const handleLeave = () =>
+    setBgClass("from-[#0f0f0f]/80 via-[#10141c]/80 to-[#0f0f0f]/80");
+
   return (
-    <section className="py-24 px-6 bg-black text-white">
-      <h2 className="text-4xl md:text-6xl font-bold text-blue-400 text-center mb-16">
+    <section
+      className={`transition-colors duration-500 bg-gradient-to-b ${bgClass} text-white py-24 px-6 w-full`}
+    >
+      <h2 className="text-center text-5xl md:text-6xl font-extrabold mb-20 bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">
         Resources
       </h2>
 
-      <div className="w-full max-w-6xl mx-auto space-y-16 text-lg leading-relaxed">
-        {/* Linux Setup */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">🖥️ Linux Setup</h3>
-          <p className="mb-3">Setting up your system — you have 3 options:</p>
+      <div className="w-full max-w-6xl mx-auto grid gap-16 text-base md:text-lg leading-relaxed">
+
+        <ResourceBlock
+          title="$ > Linux Setup"
+          onEnter={handleEnter("from-blue-900/60 via-blue-800/60 to-slate-900/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-blue-300"
+        >
+          <p className="text-slate-300 mb-4">Setting up your system — you have 3 options:</p>
           <ul className="space-y-4">
-            <li>
-              <span className="font-semibold text-white">WSL – Windows Subsystem for Linux</span>: Just a Linux terminal inside Windows.
-              <br />
-              <a href="https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/" className="text-blue-400 underline">Tutorial</a>
-              <br />
-              <span className="text-yellow-300">Note:</span> Depending on the domain you choose, dual boot may be required later.
-            </li>
-            <li>
-              <span className="font-semibold text-white">Dual Boot</span>: Boot into Linux or Windows with full GUI.
-              <br />
-              <a href="https://opensource.com/article/18/5/dual-boot-linux" className="text-blue-400 underline">Tutorial</a> |
-              <a href="https://www.youtube.com/watch?v=mXyN1aJYefc" className="text-blue-400 underline ml-2">Video</a>
-            </li>
-            <li>
-              <span className="font-semibold text-white">VM – Virtual Machine</span>: Run full Linux inside Windows.
-              <br />
-              <a href="https://www.codecademy.com/article/installing-linux-using-a-vm" className="text-blue-400 underline">Tutorial</a>
-            </li>
+            <ListItem
+              title="WSL (Windows Subsystem for Linux)"
+              description="Just a Linux terminal inside Windows."
+              links={[{ label: "Tutorial", href: "https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/" }]}
+              note="Depending on your domain, dual boot may be needed later."
+            />
+            <ListItem
+              title="Dual Boot"
+              description="Boot into Linux or Windows with full GUI."
+              links={[
+                { label: "Tutorial", href: "https://opensource.com/article/18/5/dual-boot-linux" },
+                { label: "Video", href: "https://www.youtube.com/watch?v=mXyN1aJYefc" },
+              ]}
+            />
+            <ListItem
+              title="Virtual Machine (VM)"
+              description="Run full Linux inside Windows."
+              links={[{ label: "Tutorial", href: "https://www.codecademy.com/article/installing-linux-using-a-vm" }]}
+            />
           </ul>
-        </div>
+        </ResourceBlock>
 
-        {/* Mac Setup */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">🍎 Mac Setup</h3>
-          <p className="mb-2">
-            No need to install Linux. Just install <span className="font-semibold text-white">Homebrew</span>.
+
+        <ResourceBlock
+          title="$ > Mac Setup"
+          onEnter={handleEnter("from-pink-900/60 via-fuchsia-800/60 to-slate-900/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-pink-300"
+        >
+          <p className="text-slate-300 mb-2">
+            No need to install Linux. Just install <span className="text-white font-medium">Homebrew</span>.
           </p>
-          <a href="https://www.youtube.com/watch?v=flQxyoyBX5M" className="text-blue-400 underline">Homebrew Setup Video</a>
-        </div>
+          <ExternalLink href="https://www.youtube.com/watch?v=flQxyoyBX5M">Homebrew Setup Video</ExternalLink>
+        </ResourceBlock>
 
-        {/* Linux CLI */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">💻 Linux Command Line</h3>
-          <ul className="space-y-2 list-disc list-inside">
-            <li><a href="https://ubuntu.com/tutorials/command-line-for-beginners#3-opening-a-terminal" className="text-blue-400 underline">Ubuntu CLI Tutorial</a></li>
-            <li><a href="https://medium.com/@AlexanderObregon/mastering-the-basics-of-the-ubuntu-terminal-a-beginners-guide-a9c361d0560f" className="text-blue-400 underline">Ubuntu Terminal Guide</a></li>
-            <li><a href="https://linuxjourney.com/" className="text-blue-400 underline">Linux Journey</a></li>
-            <li><a href="https://www.hostinger.com/in/tutorials/linux-commands" className="text-blue-400 underline">60 Linux Commands</a></li>
-            <li><a href="https://www.youtube.com/watch?v=gd7BXuUQ91w" className="text-blue-400 underline">Video (NetworkChuck)</a></li>
+
+        <ResourceBlock
+          title="$ > Linux Command Line"
+          onEnter={handleEnter("from-indigo-900/60 via-purple-800/60 to-slate-900/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-purple-300"
+        >
+          <ul className="space-y-3 list-disc list-inside">
+            {[
+              ["Ubuntu CLI Tutorial", "https://ubuntu.com/tutorials/command-line-for-beginners#3-opening-a-terminal"],
+              ["Ubuntu Terminal Guide", "https://medium.com/@AlexanderObregon/mastering-the-basics-of-the-ubuntu-terminal-a-beginners-guide-a9c361d0560f"],
+              ["Linux Journey", "https://linuxjourney.com/"],
+              ["60 Linux Commands", "https://www.hostinger.com/in/tutorials/linux-commands"],
+              ["NetworkChuck Video", "https://www.youtube.com/watch?v=gd7BXuUQ91w"],
+            ].map(([label, href]) => (
+              <li key={label}><ExternalLink href={href}>{label}</ExternalLink></li>
+            ))}
           </ul>
-        </div>
+        </ResourceBlock>
 
-        {/* Package Managers */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">📦 Installing Packages</h3>
-          <p className="mb-2">Each distro uses different package managers. Learn the differences here:</p>
-          <a href="https://www.youtube.com/watch?v=vX3krP6JmOY&t=143s" className="text-blue-400 underline">Package Manager Comparison Video</a>
-        </div>
 
-        {/* CLI Challenges */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">🎯 Practice Challenges</h3>
-          <a href="https://cmdchallenge.com" className="text-blue-400 underline">https://cmdchallenge.com</a>
-        </div>
+        <ResourceBlock
+          title="$ > Installing Packages"
+          onEnter={handleEnter("from-yellow-900/60 via-orange-800/60 to-yellow-300/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-yellow-300"
+        >
+          <p className="text-slate-300 mb-2">
+            Each distro uses different package managers. Learn the differences here:
+          </p>
+          <ExternalLink href="https://www.youtube.com/watch?v=vX3krP6JmOY&t=143s">Package Manager Comparison Video</ExternalLink>
+        </ResourceBlock>
 
-        {/* Programming */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">🧠 Programming Languages</h3>
 
+        <ResourceBlock
+          title="$ > Practice Challenges"
+          onEnter={handleEnter("from-cyan-900/60 via-sky-800/60 to-slate-900/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-cyan-300"
+        >
+          <ExternalLink href="https://cmdchallenge.com">https://cmdchallenge.com</ExternalLink>
+        </ResourceBlock>
+
+        <ResourceBlock
+          title="$ > Programming Languages"
+          onEnter={handleEnter("from-emerald-900/60 via-green-800/60 to-slate-900/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-emerald-300"
+        >
           <div className="mb-4">
             <h4 className="font-semibold text-white">Python</h4>
             <ul className="list-disc list-inside space-y-1">
-              <li><a href="https://www.youtube.com/watch?v=kqtD5dpn9C8" className="text-blue-400 underline">YouTube Tutorial</a></li>
-              <li><a href="https://www.w3schools.com/python/python_intro.asp" className="text-blue-400 underline">W3Schools Guide</a></li>
+              <li><ExternalLink href="https://www.youtube.com/watch?v=kqtD5dpn9C8">YouTube Tutorial</ExternalLink></li>
+              <li><ExternalLink href="https://www.w3schools.com/python/python_intro.asp">W3Schools Guide</ExternalLink></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-white">C</h4>
             <ul className="list-disc list-inside space-y-1">
-              <li><a href="https://www.youtube.com/watch?app=desktop&v=lA5x1xJtYT8" className="text-blue-400 underline">YouTube Tutorial</a></li>
-              <li><a href="https://computer.howstuffworks.com/c.htm" className="text-blue-400 underline">How C Works</a></li>
+              <li><ExternalLink href="https://www.youtube.com/watch?app=desktop&v=lA5x1xJtYT8">YouTube Tutorial</ExternalLink></li>
+              <li><ExternalLink href="https://computer.howstuffworks.com/c.htm">How C Works</ExternalLink></li>
             </ul>
           </div>
-        </div>
+        </ResourceBlock>
 
-        {/* CTFs */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-300 mb-4">🚩 Practice CTFs</h3>
+       
+        <ResourceBlock
+          title="$ > Practice CTFs"
+          onEnter={handleEnter("from-red-900/60 via-rose-800/60 to-slate-900/60")}
+          onLeave={handleLeave}
+          hoverTitleColor="text-rose-300"
+        >
           <ul className="space-y-2 list-disc list-inside">
-            <li><a href="https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04" className="text-blue-400 underline">What is CTF?</a></li>
-            <li><a href="https://www.youtube.com/watch?v=Lus7aNf2xDg&t=253s" className="text-blue-400 underline">CTF Intro Video</a></li>
-            <li><a href="https://play.picoctf.org/login" className="text-blue-400 underline">Login to PicoCTF</a> and solve beginner challenges.</li>
-            <li>If stuck, search for writeups/solutions online.</li>
+            <li><ExternalLink href="https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04">What is CTF?</ExternalLink></li>
+            <li><ExternalLink href="https://www.youtube.com/watch?v=Lus7aNf2xDg&t=253s">CTF Intro Video</ExternalLink></li>
+            <li><ExternalLink href="https://play.picoctf.org/login">PicoCTF – Beginner Challenges</ExternalLink></li>
+            <li>Search for writeups if you're stuck.</li>
           </ul>
-        </div>
+        </ResourceBlock>
       </div>
     </section>
   );
 };
+
+const ResourceBlock = ({
+  title,
+  children,
+  onEnter,
+  onLeave,
+  hoverTitleColor,
+}) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div className="relative w-full">
+
+      <div
+        onMouseEnter={() => {
+          setHovered(true);
+          onEnter?.();
+        }}
+        onMouseLeave={() => {
+          setHovered(false);
+          onLeave?.();
+        }}
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-full z-10"
+      ></div>
+
+      <div
+        className={`relative z-20 rounded-xl transition-all duration-300 ${
+          hovered ? "scale-[1.05]" : "scale-100"
+        }`}
+      >
+        <div className="rounded-xl bg-black/70 p-6 md:p-8 shadow-md backdrop-blur-md">
+          <h3
+            className={`text-3xl font-bold mb-8 tracking-tight transition-colors duration-300 ${
+              hovered ? hoverTitleColor : "text-white"
+            }`}
+          >
+            {title}
+          </h3>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+
+const ListItem = ({ title, description, links, note }) => (
+  <li>
+    <p className="font-semibold text-white">{title}</p>
+    <p className="text-slate-300">{description}</p>
+    <div className="flex flex-wrap gap-3 mt-2">
+      {links.map((l) => (
+        <ExternalLink key={l.href} href={l.href}>
+          {l.label}
+        </ExternalLink>
+      ))}
+    </div>
+    {note && <p className="text-yellow-300 mt-2">{note}</p>}
+  </li>
+);
+
+const ExternalLink = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-400 hover:text-blue-300 underline underline-offset-4 transition"
+  >
+    {children}
+  </a>
+);

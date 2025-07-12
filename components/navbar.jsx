@@ -16,14 +16,10 @@ export default function SiteNavbar() {
         <span className="font-bold text-lg">bi0s</span>
       </Link>
 
-      {/* Right side - Links (Desktop) */}
-      <div className="hidden md:flex items-center gap-10">
-        <Link href="https://wiki.bi0s.in/ " className="hover:text-blue-400 transition">
-          Resources
-        </Link>
-        <Link href="#aboutus" className="hover:text-blue-400 transition">
-          About Us
-        </Link>
+
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-10">
+        <Link href="https://wiki.bi0s.in/" className="hover:text-blue-400 transition">Resources</Link>
+        <Link href="#about" className="hover:text-blue-400 transition">About</Link>
       </div>
 
       {/* Mobile menu button */}
