@@ -108,14 +108,11 @@ export function BackgroundPaths({
                 className="w-full sm:w-auto text-center rounded-[1.15rem] px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold backdrop-blur-md bg-black/95 hover:bg-black/100 dark:bg-white/95 dark:hover:bg-white/100 text-white dark:text-black transition-all duration-300 group-hover:-translate-y-0.5 border border-white/10 dark:border-black/10 hover:shadow-md dark:hover:shadow-neutral-800/50 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3"
               >
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300 hidden sm:inline">
-                    →
-                  </span>
                   <span className="opacity-90 group-hover:opacity-100 transition-opacity text-center">
-                    Join Group For Official Messages
+                  Join for Updates
                   </span>
                   <span className="opacity-70 group-hover:opacity-100 group-hover:-translate-x-1.5 transition-all duration-300 hidden sm:inline">
-                    ←
+                    →
                   </span>
                 </div>
               </Button>
