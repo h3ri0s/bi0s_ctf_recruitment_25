@@ -104,16 +104,19 @@ export function BackgroundPaths({
   
 
             <div className="inline-block group relative bg-gradient-to-b from-white/10 to-black/10 dark:from-black/10 dark:to-white/10 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mt-8">
-            <Link href="#ctfdetail">
+            <Link href="https://chat.whatsapp.com/GEE2JXLYvuYFHZ7zFvhbZI">
                 <Button
                 variant="ghost"
                 className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md bg-black/95 hover:bg-black/100 dark:bg-white/95 dark:hover:bg-white/100 text-white dark:text-black transition-all duration-300 group-hover:-translate-y-0.5 border border-white/10 dark:border-black/10 hover:shadow-md dark:hover:shadow-neutral-800/50 flex items-center space-x-2"
                 >
+                <span className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">
+                  →
+                </span>
                 <span className="opacity-90 group-hover:opacity-100 transition-opacity">
-                    Read More
+                    Join Group For Official Messages
                 </span>
                 <span className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">
-                    ↓
+                  ←
                 </span>
                 </Button>
             </Link>
