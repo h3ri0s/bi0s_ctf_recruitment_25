@@ -153,31 +153,42 @@ const ResourceBlock = ({
   children,
   onEnter,
   onLeave,
-  hoverTitleColor,
+  hoverTitleColor = "text-blue-400",
+  hoverBgColor = "bg-black/80",
 }) => {
   const [hovered, setHovered] = useState(false);
 
+  const handleMouseEnter = () => {
+    setHovered(true);
+    onEnter?.();
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    onLeave?.();
+  };
+
   return (
     <div className="relative w-full">
-
+  
       <div
-        onMouseEnter={() => {
-          setHovered(true);
-          onEnter?.();
-        }}
-        onMouseLeave={() => {
-          setHovered(false);
-          onLeave?.();
-        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-full z-10"
       ></div>
 
       <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         className={`relative z-20 rounded-xl transition-all duration-300 ${
           hovered ? "scale-[1.05]" : "scale-100"
         }`}
       >
-        <div className="rounded-xl bg-black/70 p-6 md:p-8 shadow-md backdrop-blur-md">
+        <div
+          className={`rounded-xl p-6 md:p-8 shadow-md backdrop-blur-md transition-colors duration-300 ${
+            hovered ? hoverBgColor : "bg-black/70"
+          }`}
+        >
           <h3
             className={`text-3xl font-bold mb-8 tracking-tight transition-colors duration-300 ${
               hovered ? hoverTitleColor : "text-white"
@@ -191,6 +202,7 @@ const ResourceBlock = ({
     </div>
   );
 };
+
 
 
 
