@@ -44,7 +44,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-white font-mono">
+    <main className="min-h-screen bg-black text-white font-mono overflow-x-hidden">
       {/* Hero */}
       <div className="h-[60rem] relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
         <BackgroundPaths title={["bi0s", "CTF", "Recruitment"]} />
